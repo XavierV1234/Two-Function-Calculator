@@ -30,7 +30,7 @@ module Calculator
 	assign LEDR = A;
 
 //Instantiation of the Control Unit
-  CU CU_inst
+  CU CU1
 (
 	.value(value) ,	// input [3:0] value_sig
 	.clock(clock) ,	// input  clock_sig
@@ -47,7 +47,7 @@ module Calculator
 
 //
 //Instantiation of the input Unit
- inputUnit inputUnit_inst
+ inputUnit inputUnit1
 (
 	.row(row) ,	// input [3:0] row_sig
 	.clock(clock) ,	// input  clock_sig
@@ -60,7 +60,7 @@ module Calculator
 );
 //
 //Instantiation of the Arithmetic Unit
-   AU8 AU8_inst
+   AU8 AU81
 (
 	.X(A) ,	// input [7:0] X_sig
 	.InA(loadA) ,	// input  InA_sig
@@ -76,7 +76,7 @@ module Calculator
 );
 
 //Instantiation of the Output Unit
-   outUNIT outUNIT_inst
+   outUNIT outUNIT1
 (
 	.SW7(out) ,	// input [7:0] SW7_sig
 	.HEX3(HEX3) ,	// output  HEX3_sig
