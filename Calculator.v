@@ -1,5 +1,6 @@
 module Calculator
 (
+	//Initializing the inputs of the input unit
 	input clock, clearEntry, clearAll,
 	input [3:0] row,
 	output [0:6]HEX2, HEX1, HEX0,
@@ -10,7 +11,7 @@ module Calculator
 	//output B,C, D, E,F,G, valid
 	output [7:0] LEDR
 );
-	
+	//Initializing registers, wires, and control unit variables
 	wire [7:0] A, Rout;
 	reg [7:0] out;
 	reg clear;
@@ -28,7 +29,7 @@ module Calculator
 	
 	assign LEDR = A;
 
-
+//Instantiation of the Control Unit
   CU CU_inst
 (
 	.value(value) ,	// input [3:0] value_sig
@@ -44,7 +45,8 @@ module Calculator
 	//.slow_clock(slow_clock_sig) 	// output  slow_clock_sig
 );
 
-
+//
+//Instantiation of the input Unit
  inputUnit inputUnit_inst
 (
 	.row(row) ,	// input [3:0] row_sig
@@ -56,7 +58,8 @@ module Calculator
 	.valid(valid) ,	// output  valid_sig
 	.value(value) 	// output [3:0] value_sig
 );
-
+//
+//Instantiation of the Arithmetic Unit
    AU8 AU8_inst
 (
 	.X(A) ,	// input [7:0] X_sig
@@ -69,9 +72,10 @@ module Calculator
 	.Ovr(ovr),
 	.Zero(zero),
 	.Neg(neg),
-	.Cout(cout)
+	.Cout(court)
 );
 
+//Instantiation of the Output Unit
    outUNIT outUNIT_inst
 (
 	.SW7(out) ,	// input [7:0] SW7_sig
